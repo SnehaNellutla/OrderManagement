@@ -1,0 +1,108 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+}
+
+thead {
+  background-color: #f1f1f1;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+}
+
+th:first-child,
+td:first-child {
+  padding-left: 20px;
+}
+
+th:last-child,
+td:last-child {
+  padding-right: 20px;
+}
+
+tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+tbody td:first-child {
+  padding-left: 20px;
+}
+
+tbody td:last-child {
+  padding-right: 20px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px !important;
+  padding: 8px 16px !important;
+  background-color: #0077ff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #0059b3;
+}
+
+select {
+  padding: 8px 20px;
+  background-color: white;
+  border: 1px solid #ddd;
+
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+input[type="text"] {
+  padding: 8px 16px;
+
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+
+  background-color: white;
+  border: 1px solid #ddd;
+}
+
+thead th {
+  background-color: white;
+}
+
+/* buttons */
+
+.css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root {
+  background-color: #0077ff;
+}
+
+.css-78trlr-MuiButtonBase-root-MuiIconButton-root {
+  color: white !important;
+}
+
+.css-wb57ya-MuiFormControl-root-MuiTextField-root {
+  width: 20% !important;
+  margin-right: 16px !important;
+}
+
+button.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeMedium.css-78trlr-MuiButtonBase-root-MuiIconButton-root {
+  color: black !important;
+}
+
+.css-154xyx0-MuiInputBase-root-MuiOutlinedInput-root {
+  padding-right: 0 !important;
+}
