@@ -111,3 +111,7 @@ button.MuiButtonBase-root.MuiIconButton-root.MuiIconButton-sizeMedium.css-78trlr
   width: fit-content !important;
   padding-right: 0 !important;
 }
+.css-feqhe6 {
+  width: unset !important;
+  padding-right: 16px !important;
+}
