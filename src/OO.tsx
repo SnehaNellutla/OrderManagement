@@ -430,48 +430,7 @@ export const OO: any = () => {
                 </Button>
               </>
             )}
-            {/* </div>
-  </div> */}
-            {/* </Modal> */}
-
-            <div style={{ display: "flex", justifyContent: "flex-end" }}>
-              {isEdit ? (
-                <>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={handleUpdateSubmit}
-                  >
-                    {" "}
-                    Update
-                  </Button>
-                  <Button
-                    variant="contained"
-                    onClick={handleUpdateModalClose}
-                    style={{ marginLeft: 8 }}
-                  >
-                    Cancel
-                  </Button>
-                </>
-              ) : (
-                <>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={handleNewOrderSubmit}
-                  >
-                    Create Order
-                  </Button>
-                  <Button
-                    variant="contained"
-                    onClick={handleModalClose}
-                    style={{ marginLeft: 8 }}
-                  >
-                    Cancel
-                  </Button>
-                </>
-              )}
-            </div>
+            
           </div>
         </div>
       </Modal>
