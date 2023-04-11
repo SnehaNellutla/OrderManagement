@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Order } from './types';
+import { Order } from '../components/types';
 
 interface DraftState {
   content: any;

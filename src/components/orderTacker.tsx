@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import {
   Button,
   FormControl,
-  Icon,
   IconButton,
+  InputAdornment,
   InputLabel,
   MenuItem,
   Modal,
@@ -11,15 +11,13 @@ import {
   SelectChangeEvent,
   TextField,
 } from "@mui/material";
-import { Add, Delete, Search, Edit, SearchOutlined } from "@mui/icons-material";
+import { Add, Delete, Search, Edit } from "@mui/icons-material";
 import axios from "axios";
-
 import { Order } from "./types";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "./store";
-import "./App.css";
-import { setContent, setIsCreating } from "./draftSlice";
-export const OO: any = () => {
+import "../App.css";
+import { setContent, setIsCreating } from "../store/draftSlice";
+export const OrderTracker: any = () => {
   const dispatch = useDispatch();
   const { isCreating, content } = useSelector((state: any) => state.draft);
   const [isEdit, setIsEdit] = useState(false);
@@ -111,16 +109,13 @@ export const OO: any = () => {
       fetchData();
       console.log(response);
 
-      // Remove the deleted items from the data state
       setOrders(
         orders.filter((orderId) => !selectedIds.includes(orderId?.toString()))
       );
 
-      // Clear the selected state
       setSelectedOrders([]);
     } catch (error) {
       console.error(error);
-      // Handle error here
     }
   };
 
@@ -146,14 +141,9 @@ export const OO: any = () => {
         [name]: value,
       }));
     }
-
-    console.log(selectedOrder);
   };
 
   const handleNewOrderSubmit = async () => {
-    console.log(newOrder);
-    debugger;
-
     try {
       let response: any;
 
@@ -171,7 +161,7 @@ export const OO: any = () => {
 
       setNewOrder({ createdByUserName: "", orderType: "", customerName: "" });
       setIsModalOpen(false);
-      console.log(response, newOrder);
+
       dispatch(setIsCreating(false));
     } catch (error) {
       console.log(error);
@@ -199,49 +189,16 @@ export const OO: any = () => {
       });
       setIsModalOpen(false);
       setIsEdit(!isEdit);
-      console.log(response);
-
-      // Remove the deleted items from the data state
-
-      // Clear the selected state
     } catch (error) {
       console.error(error);
-      // Handle error here
     }
   };
   return (
     <div style={{ padding: 16 }}>
-      <div style={{ display: "flex", alignItems: "center" }}>
-        {/* <div className="search"> */}
-        {/* <input type="text" placeholder="Search" value={searchText} onChange={handleSearchChange}/>
-  <Icon className="icon" >
-    <Search />
-  </Icon> */}
-        {/* <TextField
-          label="Search"
-          variant="outlined"
-          value={searchText}
-          onChange={handleSearchChange}
-        />
-        <Button variant="contained" color="primary" onClick={handleSearchClick}>
-          <Search />
-        </Button> */}
-        {/* <TextField
-          fullWidth
-          id="standard-bare"
-          value={searchText}
-          InputProps={{
-            endAdornment: (
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleSearchChange}
-              >
-                <SearchOutlined />
-              </Button>
-            ),
-          }}
-        /> */}
+      <div
+        data-testid="some-element"
+        style={{ display: "flex", alignItems: "center" }}
+      >
         <TextField
           fullWidth
           id="standard-bare"
@@ -249,17 +206,18 @@ export const OO: any = () => {
           onChange={handleSearchChange}
           InputProps={{
             endAdornment: (
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleSearchClick}
-              >
-                <Search />
-              </Button>
+              <InputAdornment position="end">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={handleSearchClick}
+                >
+                  <Search />
+                </Button>
+              </InputAdornment>
             ),
           }}
         />
-        {/* </div> */}
 
         <Button
           className="button"
@@ -315,7 +273,7 @@ export const OO: any = () => {
           {orders
             .filter(
               (order) =>
-                order.customerName.includes(searchText) &&
+                order.customerName.toLowerCase().includes(searchText) &&
                 (!filterorderType || order.orderType === filterorderType)
             )
             .map((order) => (
@@ -339,13 +297,6 @@ export const OO: any = () => {
                 <td>{order.orderType}</td>
                 <td>{order.customerName}</td>
                 <td>
-                  {/* <Icon onClick={() => {
-  setSelectedOrder(order);
-  setIsModalOpen(true);
-  setIsEdit(!isEdit);
-}}>
-   <Edit />
-</Icon> */}
                   <IconButton
                     aria-label="delete"
                     onClick={() => {
@@ -364,7 +315,6 @@ export const OO: any = () => {
       <Modal open={isModalOpen} onClose={handleModalClose}>
         <div style={{ backgroundColor: "white", padding: 16 }}>
           {isEdit ? <h2>Update Data Page</h2> : <h1>Create New Order</h1>}
-
           <TextField
             label="Created By"
             value={
@@ -399,7 +349,6 @@ export const OO: any = () => {
                   color="primary"
                   onClick={handleUpdateSubmit}
                 >
-                  {" "}
                   Update
                 </Button>
                 <Button
@@ -430,7 +379,6 @@ export const OO: any = () => {
                 </Button>
               </>
             )}
-            
           </div>
         </div>
       </Modal>
